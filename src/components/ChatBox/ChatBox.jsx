@@ -71,13 +71,18 @@ const ChatBox = () => {
   const convertTimeStamp = (timestamp) => {
     //AM PM logic
     let date = timestamp.toDate();
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-    if (hour > 12) {
-      return hour - 12 + ":" + minute + "PM";
-    } else {
-      return hour + ":" + minute + "AM";
-    }
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let ampm = hour >= 12 ? "PM" : "AM";
+    // Convert 0 (midnight) to 12
+    hour = hour % 12;
+    hour = hour ? hour : 12; // the hour '0' should be '12'
+
+    // Add leading zero to minutes if needed
+    minute = minute < 10 ? "0" + minute : minute;
+
+  return `${hour}:${minute} ${ampm}`;
+    
   };
 
   const sendImage = async (e) => {

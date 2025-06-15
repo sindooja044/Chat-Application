@@ -4,8 +4,10 @@ import assets from "../../assets/assets";
 import { logout } from "../../config/firebase";
 import { AppContext } from "../../context/AppContext";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const RightSidebar = () => {
+  const navigate= useNavigate();
   const {
     chatUser,
     messages,
@@ -44,6 +46,14 @@ const RightSidebar = () => {
           {chatUser.userData.name}{" "}
         </h3>
         <p>{chatUser.userData.bio}</p>
+        <img
+          src={assets.arrow_icon}
+          className="arrow1"
+          alt=""
+          onClick={() => {
+            setChatRightVisible(true);
+          }}
+        />
       </div>
       <hr />
       <div className="rs-media">
@@ -71,7 +81,9 @@ const RightSidebar = () => {
     <div className={`rs ${chatVisible ? "" : "hidden"}`}>
       <button onClick={() => logout()}>Logout</button>
     </div>
+    
   );
+  
 };
 
 export default RightSidebar;

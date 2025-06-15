@@ -64,6 +64,12 @@
   padding: 10px 65px;
   border-radius: 20px;
 }
+.arrow1{
+  max-width:30px;
+  height: 30px;
+  color:white;
+  
+}
 /*@media (max-width:900px){
     .rs{
         display:none;
